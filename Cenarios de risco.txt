@@ -1,0 +1,5 @@
+1. O timeout estourou, mas o adquirente pode ter processado a cobrança. Como evitar cobrança duplicada ou pedido sem cobrança?
+
+2. O fallback aceita o pedido como PAGAMENTO_PENDENTE durante a queda. Qual o risco de negócio e como você limita a exposição?
+
+3. Quando o adquirente volta, a fila acumulada é processada de uma vez. O que impede que você o derrube de novo, ou cause um retry storm?
