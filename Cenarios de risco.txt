@@ -1,5 +1,8 @@
 1. O timeout estourou, mas o adquirente pode ter processado a cobrança. Como evitar cobrança duplicada ou pedido sem cobrança?
+R: estado incerto (unknown outcome), idempotency key repassada ao adquirente, consulta de status antes de retentar, conciliação periódica, estado PENDENTE em vez de assumir falha
 
 2. O fallback aceita o pedido como PAGAMENTO_PENDENTE durante a queda. Qual o risco de negócio e como você limita a exposição?
+R: pagamento que depois é recusado (estoque reservado, fraude, risco financeiro), limite de valor ou de tempo para aceitar pendentes, expiração da reserva, compensação (saga), comunicação ao cliente. É uma decisão compartilhada com produto.
 
 3. Quando o adquirente volta, a fila acumulada é processada de uma vez. O que impede que você o derrube de novo, ou cause um retry storm?
+R: rate limiter na saída, consumo com taxa controlada, circuit breaker em half-open com poucas chamadas de teste, backoff com jitter, priorização, backpressure e DLQ para mensagens que continuam falhando
